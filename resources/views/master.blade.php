@@ -1,3 +1,17 @@
+<?php
+
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Session;
+
+if (Session::has('user')){
+    $total = ProductController::cartitem();
+}
+else{
+    $total=0;
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -93,9 +107,18 @@
 <body>
     <div class="header">
     <ul class="nav">
-        <a href="">Home</a> 
+        <a href="/">Ecom</a> 
         <a href="">Orders</a>
-        <a class = "cart" href="">Add to cart</a>
+        <a href="">Add to cart ({{$total}})</a>
+        @if(Session::has('user')){
+            <a href="/logout">Logout</a>
+        }
+        @else{
+            <a href="/login">Login</a>
+        }
+        @endif
+        
+
 
         <form action="/search" method="POST" >
         @csrf

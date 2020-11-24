@@ -1,5 +1,4 @@
 @extends('master')
-
 @section('content')
 <h2 class="heading">Login Page</h2>
 <form action="/login" method="POST"  class="form">

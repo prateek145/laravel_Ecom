@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\cart;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -39,6 +39,17 @@ class ProductController extends Controller
         }
 
     }
+
+    static function cartitem(){
+        $user = Session::get('user')['id'];
+        return cart::where('user_id', $user)->count();
+    }
+
+    
+
+
+
+    
 
    
 }

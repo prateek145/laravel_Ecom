@@ -14,8 +14,13 @@
 <div class="buttons">
     <form action="/add_to_cart" method="POST">
     @csrf
-    <input type="hidden" name = "addcart" value="{{$product['id']}}">
-    <button style="padding: 10px; border:none; border-radius:5px; ">Add to cart</button><br>
+    @if(Session::has('user'))
+        <input type="hidden" name = "addcart" value="{{$product['id']}}">
+        <button style="padding: 10px; border:none; border-radius:5px; ">Add to cart</button><br>
+    @else
+        <button style="padding: 10px; border:none; border-radius:5px"><a href="/login">Add to cart<br></a></button>
+    @endif 
+    
     </form>
     
     <button style="padding: 10px; border:none; border-radius:5px; ">Buy now</button>
