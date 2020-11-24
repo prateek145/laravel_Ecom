@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -35,5 +34,9 @@ Route::post('/search',[ProductController::class, 'search']);
 Route::post('/add_to_cart', [ProductController::class, 'add_to_cart']);
 
 Route::get('/total_cart', [ProductController::class, 'cartitem']);
+
+Route::get('/cart', [ProductController::class, 'cart']);
+
+Route::get("removecart/{id}",[ProductController::class,'removeCart']);
 
 

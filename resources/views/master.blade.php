@@ -57,7 +57,6 @@ else{
         padding-top: 30%;
         background-color: lightgreen;
         padding: 20px;
-        text-align: center;
         width: 100%;
         height: 900px;
         
@@ -109,7 +108,7 @@ else{
     <ul class="nav">
         <a href="/">Ecom</a> 
         <a href="">Orders</a>
-        <a href="">Add to cart ({{$total}})</a>
+        <a href="/cart">Add to cart ({{$total}})</a>
         @if(Session::has('user')){
             <a href="/logout">Logout</a>
         }
