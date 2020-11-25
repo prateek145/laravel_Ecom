@@ -15,10 +15,12 @@
     </div>
 
     <div class="" style="margin-left: 30px">
-        <a href="/removecart/{{$item->cart_id}}"> Remove</a>
+        <a href="/removecart/{{$item->cart_id}}" style="margin-left: 10px; padding:6px; border:none; margin-top:10px; text-decoration: none; background-color:red; color:black; border-radius:4px;"> Remove</a>
     </div>
 </div>
 
 @endforeach
+
+<button style="margin-left: 10px; padding:6px; border:none; margin-top:10px; text-decoration: none; color:black; border-radius:6px; background-color:cornflowerblue"><a href="/orders"> Order now</a></button>
 
 @endsection

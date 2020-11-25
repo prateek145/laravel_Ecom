@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\cart;
 use Illuminate\Support\Facades\Session;
+use App\Models\order;
 
 class ProductController extends Controller
 {
@@ -56,11 +57,43 @@ class ProductController extends Controller
     function removeCart($id)
     {
          cart::destroy($id);
-        return redirect('cart
-        ');
+        return redirect('cart');
     }
 
+    function orders(){
+        $user = Session::get('user')['id'];
+        
+        $data = DB::table('cart')->join('products', 'cart.product_id', 'products.id')->where('cart.user_id', $user)->sum('products.price');
+        return view('/orders',['products'=> $data]);
+    }
 
+    function order_place(Request $request){
+        $user = Session::get('user')['id'];
+
+        $data = cart::where('user_id', $user)->get();
+
+        foreach($data as $item){
+            $order = new order();
+           $order->product_id = $item['product_id'];
+           $order->user_id = $item['user_id'];
+           $order->address = $request->address;
+           $order->payment_method = $request->payment_method;
+           $order->payment_status = 'pending';
+           $order->save();
+        }
+
+        cart::where('user_id', $user)->delete();
+        return redirect('/');
+
+    }
+
+    function my_order(){
+        $user = Session::get('user')['id'];
+        $orders = DB::table('orders')->join('products', 'orders.product_id', 'products.id')->where('orders.user_id', $user)->get();
+
+        return view('/my_order', ['orders'=> $orders]);
+
+    }
 
     
 

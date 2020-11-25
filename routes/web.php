@@ -21,6 +21,13 @@ Route::get('/logout', function(){
     return redirect('login');
 });
 
+Route::get('/register', function(){
+    return view('register');
+
+});
+
+Route::post('/register', [UserController::class, 'register']);
+
 Route::get('/', [ProductController::class, 'product']);
 
 Route::get('/login', [UserController::class, 'login']);
@@ -38,5 +45,13 @@ Route::get('/total_cart', [ProductController::class, 'cartitem']);
 Route::get('/cart', [ProductController::class, 'cart']);
 
 Route::get("removecart/{id}",[ProductController::class,'removeCart']);
+
+Route::get('/orders', [ProductController::class, 'orders']);
+
+Route::post('/order_place', [ProductController::class, 'order_place']);
+
+Route::get('my_order/', [ProductController::class, 'my_order']);
+
+
 
 

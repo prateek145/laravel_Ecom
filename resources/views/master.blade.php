@@ -96,6 +96,7 @@ else{
         text-align: center;
         font-weight: 700;
         font-size: larger;
+        margin-top: auto;
     }
 
 </style>  
@@ -107,14 +108,15 @@ else{
     <div class="header">
     <ul class="nav">
         <a href="/">Ecom</a> 
-        <a href="">Orders</a>
+        <a href="/my_order">Orders</a>
         <a href="/cart">Add to cart ({{$total}})</a>
-        @if(Session::has('user')){
+        @if(Session::has('user'))
             <a href="/logout">Logout</a>
-        }
-        @else{
+        
+        @else
             <a href="/login">Login</a>
-        }
+            <a href="/register">Register</a>
+        
         @endif
         
 
