@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,8 @@ Route::get('/orders', [ProductController::class, 'orders']);
 Route::post('/order_place', [ProductController::class, 'order_place']);
 
 Route::get('my_order/', [ProductController::class, 'my_order']);
+
+
 
 
 

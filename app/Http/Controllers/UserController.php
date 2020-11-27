@@ -11,7 +11,9 @@ class UserController extends Controller
 {
     function login(){
         return view('login');
-    }    function login_auth(Request $request){
+    }    
+    
+    function login_auth(Request $request){
         $user = User::where(['name'=>$request->name])->first();
         if (!$user || !Hash::check($request->password, $user->password)){
             return "username or password are incorrect";
